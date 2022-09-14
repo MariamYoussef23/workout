@@ -10,11 +10,25 @@ body {
   height: 100% !important;
 }
 
+html {
+  height: h-full ;
+  background: rgb(243 244 246);
+}
+
 #__next{
   height: 100% !important;
 
 }
 
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
 
 /* @media (prefers-color-scheme: dark) {
   html {
@@ -25,12 +39,3 @@ body {
     background: black;
   }
 } */
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
-}
