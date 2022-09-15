@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 import { ExclamationCircleIcon } from '@heroicons/react/20/solid';
-import { useFormik } from 'formik';
+import { FormikConsumer, useFormik } from 'formik';
 import * as Yup from 'yup';
 
 type Props = {};
@@ -18,12 +18,12 @@ const Signup = (props: Props) => {
     onSubmit: (values) => {
       console.log(values);
     },
-    // validationSchema: Yup.object({
-    //   firstname: Yup.string().required('Please enter your first name'),
-    //   lastname: Yup.string().required('Please enter your last name'),
-    //   email: Yup.string().required('Please enter your email'),
-    //   password: Yup.string().required('Please enter your password'),
-    // }),
+    validationSchema: Yup.object({
+      firstname: Yup.string().required('Please enter your first name'),
+      lastname: Yup.string().required('Please enter your last name'),
+      email: Yup.string().required('Please enter your email'),
+      password: Yup.string().required('Please enter your password'),
+    }),
   });
 
   return (
@@ -70,6 +70,15 @@ const Signup = (props: Props) => {
                         required
                         className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-indigo-500 sm:text-sm"
                       />
+
+                      {formik.errors.firstname && formik.touched.firstname ? (
+                        <div
+                          className="p-2 mb-2 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
+                          role="alert"
+                        >
+                          {formik.errors.firstname}
+                        </div>
+                      ) : null}
                     </div>
                   </div>
                   <div className="basis-1/2">
@@ -91,6 +100,14 @@ const Signup = (props: Props) => {
                         required
                         className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-indigo-500 sm:text-sm"
                       />
+                      {formik.errors.lastname && formik.touched.lastname ? (
+                        <div
+                          className="p-2 mb-2 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
+                          role="alert"
+                        >
+                          {formik.errors.lastname}
+                        </div>
+                      ) : null}
                     </div>
                   </div>
                 </div>
@@ -111,6 +128,14 @@ const Signup = (props: Props) => {
                   >
                     <option>Male</option>
                     <option>Female</option>
+                    {formik.errors.gender && formik.touched.gender ? (
+                      <div
+                        className="p-2 mb-2 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
+                        role="alert"
+                      >
+                        {formik.errors.gender}
+                      </div>
+                    ) : null}
                   </select>
                 </div>
                 <div>
@@ -132,6 +157,14 @@ const Signup = (props: Props) => {
                       required
                       className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-indigo-500 sm:text-sm"
                     />
+                    {formik.errors.email && formik.touched.email ? (
+                      <div
+                        className="p-2 mb-2 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
+                        role="alert"
+                      >
+                        {formik.errors.email}
+                      </div>
+                    ) : null}
                   </div>
                 </div>
 
@@ -154,6 +187,14 @@ const Signup = (props: Props) => {
                       required
                       className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-indigo-500 sm:text-sm"
                     />
+                    {formik.errors.password && formik.touched.password ? (
+                      <div
+                        className="p-2 mb-2 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
+                        role="alert"
+                      >
+                        {formik.errors.password}
+                      </div>
+                    ) : null}
                   </div>
                 </div>
 

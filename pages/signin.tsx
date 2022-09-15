@@ -15,6 +15,10 @@ const Signin = (props: Props) => {
     onSubmit: (values) => {
       console.log(values);
     },
+    validationSchema: Yup.object({
+      email: Yup.string().required('Please enter your email'),
+      password: Yup.string().required('Please enter your password'),
+    }),
   });
 
   return (
@@ -60,6 +64,14 @@ const Signin = (props: Props) => {
                       required
                       className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-indigo-500 sm:text-sm"
                     />
+                    {formik.errors.email && formik.touched.email ? (
+                      <div
+                        className="p-2 mb-2 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
+                        role="alert"
+                      >
+                        {formik.errors.email}
+                      </div>
+                    ) : null}
                   </div>
                 </div>
 
@@ -82,6 +94,14 @@ const Signin = (props: Props) => {
                       required
                       className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-indigo-500 sm:text-sm"
                     />
+                    {formik.errors.password && formik.touched.password ? (
+                      <div
+                        className="p-2 mb-2 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
+                        role="alert"
+                      >
+                        {formik.errors.password}
+                      </div>
+                    ) : null}
                   </div>
                 </div>
 

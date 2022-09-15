@@ -1,8 +1,10 @@
+import Layout from '../components/layout';
+
 const Workouts = () => {
   return (
-  <>
-  Hello world 
-  </>
-  )
+    <>
+      <Layout>Hello world</Layout>
+    </>
+  );
 };
 export default Workouts;
