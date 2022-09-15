@@ -206,7 +206,7 @@ const workout = {
     {
       id: 1,
       name: "Squats",
-      imageSrc: "",
+      imageSrc: "../../images/colin-lloyd-rdgGNjj69zI-unsplash.jpg",
       sets: 4,
       recReps: 20,
       video: "https://www.youtube.com/watch?v=aclHkVaku9U",
@@ -214,7 +214,7 @@ const workout = {
     {
       id: 2,
       name: "Walking Lunge",
-      imageSrc: "",
+      imageSrc: "../../public/images/61a7e2b2c2f2b433de456203_thomas-yohei-BAlBUJb-SXQ-unsplash-p-800.jpeg",
       sets: 3,
       recReps: 15,
       video: "https://www.youtube.com/watch?v=L8fvypPrzzs",
@@ -222,7 +222,7 @@ const workout = {
     {
       id: 3,
       name: "EATED LEG PRESS",
-      imageSrc: "",
+      imageSrc: "../../public/images/61a7e2b2c2f2b433de456203_thomas-yohei-BAlBUJb-SXQ-unsplash-p-800.jpeg",
       sets: 5,
       recReps: 10,
       video: "https://youtu.be/IZxyjW7MPJQ",
@@ -230,13 +230,13 @@ const workout = {
     {
       id: 4,
       name: "DEADLIFT (BARBELL)",
-      imageSrc: "",
+      imageSrc: "../../public/images/61a7e2b2c2f2b433de456203_thomas-yohei-BAlBUJb-SXQ-unsplash-p-800.jpeg",
       sets: 3,
       recReps: 20,
       video: "https://youtu.be/r4MzxtBKyNE",
     },
   ],
-  imageSrc: "./images/legday.jpeg",
+  imageSrc: "../../public/images/61a7e2b2c2f2b433de456203_thomas-yohei-BAlBUJb-SXQ-unsplash-p-800.jpeg",
   imageAlt: "Leg day",
 };
 

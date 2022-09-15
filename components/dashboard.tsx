@@ -142,7 +142,7 @@ const Dashboard = ({ children }: childrenProps) => {
             <img
               className="h-12 w-auto"
               src="./images/logo-4.png"
-              alt="Your Company"
+              alt="Logo"
             />
           </div>
           <div className="mt-5 flex flex-grow flex-col">
