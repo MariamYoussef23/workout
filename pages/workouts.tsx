@@ -1,9 +1,12 @@
-import Layout from '../components/layout';
+import React from "react";
+import Layout from "../components/layout";
 
 const Workouts = () => {
   return (
     <>
-      <Layout>Hello world</Layout>
+      <Layout>
+          
+      </Layout>
     </>
   );
 };
