@@ -261,7 +261,7 @@ const Dashboard = ({ children }: childrenProps) => {
             </div>
           </div>
         </div>
-        <div>{children}</div>
+      <div>{children}</div>
       </div>
     </>
   );
