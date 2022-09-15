@@ -34,14 +34,14 @@ const Workouttable = (props: Props) => {
                         scope="col"
                         className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                       >
-                        KG
+                        Weight
                       </th>
 
                       <th
                         scope="col"
                         className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                       >
-                        Reps{' '}
+                        Reps
                       </th>
                       <th
                         scope="col"
@@ -66,7 +66,7 @@ const Workouttable = (props: Props) => {
                             name="text"
                             id="text"
                             className="block w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black sm:text-sm"
-                            placeholder="ex: 20KG"
+                            placeholder=" 20KG"
                           />{' '}
                         </td>
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
@@ -75,7 +75,7 @@ const Workouttable = (props: Props) => {
                             name="text"
                             id="text"
                             className="block w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black sm:text-sm"
-                            placeholder=" ex: 3"
+                            placeholder=" 3"
                           />{' '}
                         </td>
                         <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">

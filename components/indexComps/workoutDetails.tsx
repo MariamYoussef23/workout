@@ -4,7 +4,8 @@ import {
   UserCircleIcon,
 } from "@heroicons/react/20/solid";
 import React from "react";
-import LogTable from "./logTable";
+import Workouttable from "../workouttable";
+
 
 const activity = [
   {
@@ -283,7 +284,7 @@ const WorkoutDetails = () => {
                         </p>
                       </div>
                       <div className="mt-2 text-sm text-gray-700">
-                        <LogTable exercise={exercise} />
+                        <Workouttable />
                       </div>
                     </div>
                   </>
