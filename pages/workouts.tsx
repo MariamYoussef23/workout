@@ -1,8 +1,13 @@
+import React from "react";
+import Layout from "../components/layout";
+
 const Workouts = () => {
   return (
-  <>
-  Hello world 
-  </>
-  )
+    <>
+      <Layout>
+          
+      </Layout>
+    </>
+  );
 };
 export default Workouts;
