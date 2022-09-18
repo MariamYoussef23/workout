@@ -20,7 +20,7 @@ const Exercise = (props: Props) => {
   return (
     <Layout>
       <div className="px-4 py-5 sm:px-6 h-full ">
-        <div className="grid grid-cols-3 h-full py-8  ">
+        <div className="grid grid-cols-3 h-full py-8">
           <div className=" rounded-md col-span-2 h-full ">
             <iframe
               className="rounded-lg"
