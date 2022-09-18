@@ -17,8 +17,8 @@ model User {
   firstName      String
   lastName       String
   password       String
-  weight      Int
-  height      Int
+  weight      Int?
+  height      Int?
   userLogs UserLog[]
 }
 
