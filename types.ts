@@ -1,5 +1,5 @@
 export interface Exercise {
-  id: number;
+  id: string;
   name: string;
   imageSrc: string;
   imageAlt: string;
@@ -7,5 +7,5 @@ export interface Exercise {
   sets: number;
   reps: string;
   video: string;
-  href: string;
+  
 }

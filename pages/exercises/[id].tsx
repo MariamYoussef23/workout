@@ -4,9 +4,9 @@ import Workouttable from '../../components/workouttable';
 
 type Props = {};
 
-const Exerse = (props: Props) => {
+const Exercise = (props: Props) => {
   const exercise = {
-    id: 1,
+    id: "1",
     name: 'Squats',
     imageSrc: '/images/venti-views-j-Ou5YvdXFQ-unsplash (1).jpg',
     imageAlt: 'Squats',
@@ -60,4 +60,4 @@ const Exerse = (props: Props) => {
   );
 };
 
-export default Exerse;
+export default Exercise;
