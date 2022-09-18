@@ -9,10 +9,11 @@ body {
   height: 100% !important;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    background: rgb(243, 244, 246) !important;
 }
 
 html {
-  background: rgb(243 244 246);
+  background: rgb(243, 244, 246) !important;
 }
 
 #__next {
@@ -26,7 +27,10 @@ a {
 
 * {
   box-sizing: border-box;
+  
 }
+
+
 
 /* @media (prefers-color-scheme: dark) {
   html {

@@ -99,7 +99,7 @@ const Dashboard = ({ children }: childrenProps) => {
                 </div>
                 <div className="mt-5 h-0 flex-1 overflow-y-auto">
                   <nav className="space-y-1 px-2">
-                    {navigation.map((item) => (
+                    {navigation.map((item , idx) => (
                       <Link href={item.href}>
                         <a
                           key={item.name}

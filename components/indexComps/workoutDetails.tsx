@@ -248,7 +248,7 @@ const WorkoutDetails = () => {
   return (
     <>
       <div>
-        <p className="mt-6 mb-6">Today's Workout (Leg Day)</p>
+        <p className="mt-6 mb-6"> Today's Workout (Leg Day)</p>
       </div>
 
       {/* workout details  */}

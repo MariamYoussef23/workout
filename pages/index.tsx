@@ -1,4 +1,3 @@
-import { FireIcon } from "@heroicons/react/24/outline";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
 import React from "react";
