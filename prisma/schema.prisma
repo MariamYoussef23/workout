@@ -1,0 +1,69 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  email     String   @unique
+  firstName      String
+  lastName       String
+  password       String
+  weight      Int
+  height      Int
+  userLogs UserLog[]
+}
+
+model Workout {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  name       String
+  workoutLines WorkoutLine[]
+}
+
+model Exercise {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  Name     String
+  Description       String
+  Images       String
+  video      String 
+  workoutLines WorkoutLine[]
+}
+
+model WorkoutLine {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  sets      Int
+  recReps    Int
+  recWeights   Int
+  exercise Exercise @relation(fields: [exerciseId], references: [id], onDelete: Cascade)
+  exerciseId Int
+  workout Workout @relation(fields: [workoutId], references: [id], onDelete: Cascade)
+  workoutId Int
+  userLogs UserLog[]
+}
+
+model UserLog {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  setNo      Int
+  Reps    Int
+  Weights   Int
+  workoutLine WorkoutLine @relation(fields: [workoutLineId], references: [id], onDelete: Cascade)
+  workoutLineId Int
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId Int
+}
+
+
