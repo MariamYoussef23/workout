@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { Fragment, useState } from "react";
-import { Dialog, Menu, Transition } from "@headlessui/react";
+import Link from 'next/link';
+import { Fragment, useState } from 'react';
+import { Dialog, Menu, Transition } from '@headlessui/react';
 import {
   Bars3BottomLeftIcon,
   BellIcon,
@@ -12,28 +12,28 @@ import {
   UsersIcon,
   XMarkIcon,
   BoltIcon,
-} from "@heroicons/react/24/outline";
-import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
+} from '@heroicons/react/24/outline';
+import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 
 const navigation = [
-  { name: "Dashboard", href: "/", icon: HomeIcon, current: true },
+  { name: 'Dashboard', href: '/', icon: HomeIcon, current: true },
   {
-    name: "Browse Workouts",
-    href: "/workouts",
+    name: 'Browse Workouts',
+    href: '/workouts',
     icon: BoltIcon,
     current: false,
   },
-  { name: "Calendar", href: "#", icon: CalendarIcon, current: false },
-  { name: "Progress", href: "#", icon: ChartBarIcon, current: false },
+  { name: 'Calendar', href: '/calendar', icon: CalendarIcon, current: false },
+  { name: 'Progress', href: '#', icon: ChartBarIcon, current: false },
 ];
 const userNavigation = [
-  { name: "Your Profile", href: "#" },
-  { name: "Settings", href: "#" },
-  { name: "Sign out", href: "#" },
+  { name: 'Your Profile', href: '#' },
+  { name: 'Settings', href: '#' },
+  { name: 'Sign out', href: '#' },
 ];
 
 function classNames(...classes: any) {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(' ');
 }
 type childrenProps = {
   children: React.ReactNode;
@@ -109,17 +109,17 @@ const Dashboard = ({ children }: childrenProps) => {
                         <a
                           className={classNames(
                             item.current
-                              ? "bg-gray-100 text-gray-900"
-                              : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
-                            "group flex items-center px-2 py-2 text-base font-medium rounded-md"
+                              ? 'bg-gray-100 text-gray-900'
+                              : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                            'group flex items-center px-2 py-2 text-base font-medium rounded-md',
                           )}
                         >
                           <item.icon
                             className={classNames(
                               item.current
-                                ? "text-gray-500"
-                                : "text-gray-400 group-hover:text-gray-500",
-                              "mr-4 flex-shrink-0 h-6 w-6"
+                                ? 'text-gray-500'
+                                : 'text-gray-400 group-hover:text-gray-500',
+                              'mr-4 flex-shrink-0 h-6 w-6',
                             )}
                             aria-hidden="true"
                           />
@@ -152,17 +152,17 @@ const Dashboard = ({ children }: childrenProps) => {
                   <a
                     className={classNames(
                       item.current
-                        ? "bg-gray-100 text-gray-900"
-                        : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
-                      "group flex items-center px-2 py-2 text-sm font-medium rounded-md"
+                        ? 'bg-gray-100 text-gray-900'
+                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                      'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
                     )}
                   >
                     <item.icon
                       className={classNames(
                         item.current
-                          ? "text-gray-500"
-                          : "text-gray-400 group-hover:text-gray-500",
-                        "mr-3 flex-shrink-0 h-6 w-6"
+                          ? 'text-gray-500'
+                          : 'text-gray-400 group-hover:text-gray-500',
+                        'mr-3 flex-shrink-0 h-6 w-6',
                       )}
                       aria-hidden="true"
                     />
@@ -244,8 +244,8 @@ const Dashboard = ({ children }: childrenProps) => {
                           <Link href={item.href}>
                             <a
                               className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
+                                active ? 'bg-gray-100' : '',
+                                'block px-4 py-2 text-sm text-gray-700',
                               )}
                             >
                               {item.name}
