@@ -1,28 +1,44 @@
 import Link from 'next/link';
 import React from 'react';
-import { ExclamationCircleIcon } from '@heroicons/react/20/solid';
 import { FormikConsumer, useFormik } from 'formik';
 import * as Yup from 'yup';
+import axios from 'axios';
 
 type Props = {};
 
 const Signup = (props: Props) => {
+  const sendData = async (data: any) => {
+    try {
+      const sentdata = await axios.post(
+        'http://localhost:3000/api/user/signup',
+        data,
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const formik = useFormik({
     initialValues: {
-      firstname: '',
-      lastname: '',
+      firstName: '',
+      lastName: '',
       email: '',
-      gender: 'male',
+      gender: '',
       password: '',
+      weight: '',
+      height: '',
     },
     onSubmit: (values) => {
+      sendData(values);
       console.log(values);
     },
     validationSchema: Yup.object({
-      firstname: Yup.string().required('Please enter your first name'),
-      lastname: Yup.string().required('Please enter your last name'),
+      firstName: Yup.string().required('Please enter your first name'),
+      lastName: Yup.string().required('Please enter your last name'),
       email: Yup.string().required('Please enter your email'),
       password: Yup.string().required('Please enter your password'),
+      weight: Yup.number().required('Please enter your weight'),
+      height: Yup.number().required('Please enter your height'),
     }),
   });
 
@@ -49,11 +65,11 @@ const Signup = (props: Props) => {
 
           <div className="mt-8">
             <div className="mt-6">
-              <form action="#" method="POST" className="space-y-6">
+              <form className="space-y-6">
                 <div className="flex flex-row space-x-4">
                   <div className="basis-1/2">
                     <label
-                      htmlFor="firstname"
+                      htmlFor="firstName"
                       className="block text-sm font-medium text-gray-700"
                     >
                       First Name
@@ -62,28 +78,28 @@ const Signup = (props: Props) => {
                       <input
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
-                        value={formik.values.firstname}
-                        id="firstname"
-                        name="firstname"
-                        type="firstname"
-                        autoComplete="firstname"
+                        value={formik.values.firstName}
+                        id="firstName"
+                        name="firstName"
+                        type="firstName"
+                        autoComplete="firstName"
                         required
                         className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-indigo-500 sm:text-sm"
                       />
 
-                      {formik.errors.firstname && formik.touched.firstname ? (
+                      {formik.errors.firstName && formik.touched.firstName ? (
                         <div
                           className="p-2 mb-2 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
                           role="alert"
                         >
-                          {formik.errors.firstname}
+                          {formik.errors.firstName}
                         </div>
                       ) : null}
                     </div>
                   </div>
                   <div className="basis-1/2">
                     <label
-                      htmlFor="lastname"
+                      htmlFor="lastName"
                       className="block text-sm font-medium text-gray-700"
                     >
                       Last Name
@@ -92,20 +108,20 @@ const Signup = (props: Props) => {
                       <input
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
-                        id="lastname"
-                        name="lastname"
-                        type="lastname"
-                        autoComplete="lastname"
-                        value={formik.values.lastname}
+                        id="lastName"
+                        name="lastName"
+                        type="lastName"
+                        autoComplete="lastName"
+                        value={formik.values.lastName}
                         required
                         className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-indigo-500 sm:text-sm"
                       />
-                      {formik.errors.lastname && formik.touched.lastname ? (
+                      {formik.errors.lastName && formik.touched.lastName ? (
                         <div
                           className="p-2 mb-2 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
                           role="alert"
                         >
-                          {formik.errors.lastname}
+                          {formik.errors.lastName}
                         </div>
                       ) : null}
                     </div>
@@ -197,11 +213,73 @@ const Signup = (props: Props) => {
                     ) : null}
                   </div>
                 </div>
+                <div className="flex flex-row space-x-4">
+                  <div className="basis-1/2">
+                    <label
+                      htmlFor="firstName"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Your weight
+                    </label>
+                    <div className="mt-1">
+                      <input
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.weight}
+                        id="weight"
+                        name="weight"
+                        type="weight"
+                        autoComplete="weight"
+                        required
+                        className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                      />
+
+                      {formik.errors.weight && formik.touched.weight ? (
+                        <div
+                          className="p-2 mb-2 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
+                          role="alert"
+                        >
+                          {formik.errors.weight}
+                        </div>
+                      ) : null}
+                    </div>
+                  </div>
+                  <div className="basis-1/2">
+                    <label
+                      htmlFor="lastname"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Your height{' '}
+                    </label>
+                    <div className="mt-1">
+                      <input
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        id="height"
+                        name="height"
+                        type="height"
+                        autoComplete="height"
+                        value={formik.values.height}
+                        required
+                        className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                      />
+                      {formik.errors.height && formik.touched.height ? (
+                        <div
+                          className="p-2 mb-2 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
+                          role="alert"
+                        >
+                          {formik.errors.height}
+                        </div>
+                      ) : null}
+                    </div>
+                  </div>
+                </div>
+                <br />
 
                 <div>
                   <button
                     onClick={() => formik.handleSubmit()}
-                    type="submit"
+                    type="button"
                     className="flex w-full justify-center rounded-md border border-transparent bg-black py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-focus:border-black focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
                   >
                     Create

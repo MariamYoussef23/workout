@@ -3,16 +3,29 @@ import Link from 'next/link';
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import axios from 'axios';
 
 type Props = {};
 
 const Signin = (props: Props) => {
+  const sendData = async (data: any) => {
+    try {
+      const sentdata = await axios.post(
+        'http://localhost:3000/api/user/login',
+        data,
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
     },
     onSubmit: (values) => {
+      sendData(values);
       console.log(values);
     },
     validationSchema: Yup.object({
