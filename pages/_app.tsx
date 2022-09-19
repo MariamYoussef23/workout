@@ -1,9 +1,14 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import Layout from "../components/layout";
+import { UserProvider } from "@supabase/auth-helpers-react";
+import { supabaseClient } from "@supabase/auth-helpers-nextjs";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+  return (
+    <UserProvider supabaseClient={supabaseClient}>
+      <Component {...pageProps} />;
+    </UserProvider>
+  );
 }
 
 export default MyApp;
