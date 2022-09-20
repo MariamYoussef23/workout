@@ -17,8 +17,8 @@ model User {
   firstName      String
   lastName       String
   password       String
-  weight      Int?
-  height      Int?
+  weight     String?
+  height      String?
   gender         String?
   userLogs UserLog[]
 }
@@ -33,7 +33,6 @@ model Workout {
 
 model Exercise {
   id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
   Name     String
   Description       String
   Images       String

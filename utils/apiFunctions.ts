@@ -1,14 +1,11 @@
-
 import { supabaseClient } from "@supabase/auth-helpers-nextjs";
 import axios from "axios";
 import router, { NextRouter } from "next/router";
 import { NewUser } from "../types";
 
-
 const API = axios.create({ baseURL: "http://localhost:3000" });
 
 export const signupApi = async (values: NewUser, router: NextRouter) => {
-  console.log("done");
   try {
     const res = await supabaseClient.auth.signUp({
       email: values.email,
@@ -19,6 +16,7 @@ export const signupApi = async (values: NewUser, router: NextRouter) => {
       password: values.password,
     });
     const res2 = await API.post("/api/user/signup", values);
+    console.log(res2);
     router.push("/");
   } catch (error) {
     console.log(error);

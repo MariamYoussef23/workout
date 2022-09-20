@@ -20,8 +20,8 @@ const router = useRouter()
       email: "",
       gender: "",
       password: "",
-      weight: 0,
-      height: 0,
+      weight: "",
+      height:"",
     },
     onSubmit: (values) => {
       signupApi(values, router);

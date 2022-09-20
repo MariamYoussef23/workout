@@ -125,7 +125,7 @@ export default Workouts;
 // };
 
 export const getServerSideProps = withPageAuth({
-  redirectTo: "./login",
+  redirectTo: "./signin",
   async getServerSideProps() {
     const workouts = await getWorkouts();
 
