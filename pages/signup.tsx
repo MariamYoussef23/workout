@@ -4,11 +4,15 @@ import { FormikConsumer, useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { signupApi } from "../utils/apiFunctions";
+import { useRouter } from "next/router";
 
 
 type Props = {};
 
 const Signup = (props: Props) => {
+
+const router = useRouter()
+
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -20,7 +24,7 @@ const Signup = (props: Props) => {
       height: 0,
     },
     onSubmit: (values) => {
-      signupApi(values);
+      signupApi(values, router);
       console.log(values)
     },
     validationSchema: Yup.object({
@@ -299,3 +303,7 @@ const Signup = (props: Props) => {
 };
 
 export default Signup;
+function userRouter() {
+  throw new Error("Function not implemented.");
+}
+
