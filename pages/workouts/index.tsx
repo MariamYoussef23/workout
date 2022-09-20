@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { GetStaticProps } from "next";
 import { getWorkouts } from "../../utils/apiFunctions";
+import { withPageAuth } from "@supabase/auth-helpers-nextjs";
 
 // const workouts = [
 //   {
@@ -68,11 +69,9 @@ import { getWorkouts } from "../../utils/apiFunctions";
 //   // More products...
 // ];
 
-const Workouts = ({workouts}: any) => {
+const Workouts = ({ workouts }: any) => {
   const router = useRouter();
   const id = router.query.id;
-
-
 
   return (
     <>
@@ -115,12 +114,25 @@ const Workouts = ({workouts}: any) => {
 };
 export default Workouts;
 
-export const getStaticProps: GetStaticProps = async () => {
-  const workouts = await getWorkouts()
-  
-  return {
-    props: {
-      workouts,
-    },
-  };
-};
+// export const getStaticProps: GetStaticProps = async () => {
+//   const workouts = await getWorkouts();
+
+//   return {
+//     props: {
+//       workouts,
+//     },
+//   };
+// };
+
+export const getServerSideProps = withPageAuth({
+  redirectTo: "./login",
+  async getServerSideProps() {
+    const workouts = await getWorkouts();
+
+    return {
+      props: {
+        workouts,
+      },
+    };
+  },
+});
