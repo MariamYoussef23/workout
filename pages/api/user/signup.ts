@@ -9,18 +9,22 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === "POST") {
-    
     try {
-      const { firstName, lastName, email, password } = req.body;
+      const { firstName, lastName, email, password, gender, weight, height } =
+        req.body;
       const user = await prisma.user.create({
         data: {
           firstName,
           lastName,
           email,
           password,
+          gender,
+          weight,
+          height,
         },
       });
 
+      
       return res.status(200).json({ user });
     } catch (error) {
       console.log(error);

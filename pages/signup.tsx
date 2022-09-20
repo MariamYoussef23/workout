@@ -1,44 +1,35 @@
-import Link from 'next/link';
-import React from 'react';
-import { FormikConsumer, useFormik } from 'formik';
-import * as Yup from 'yup';
-import axios from 'axios';
+import Link from "next/link";
+import React from "react";
+import { FormikConsumer, useFormik } from "formik";
+import * as Yup from "yup";
+import axios from "axios";
+import { signupApi } from "../utils/apiFunctions";
+
 
 type Props = {};
 
 const Signup = (props: Props) => {
-  const sendData = async (data: any) => {
-    try {
-      const sentdata = await axios.post(
-        'http://localhost:3000/api/user/signup',
-        data,
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const formik = useFormik({
     initialValues: {
-      firstName: '',
-      lastName: '',
-      email: '',
-      gender: '',
-      password: '',
-      weight: '',
-      height: '',
+      firstName: "",
+      lastName: "",
+      email: "",
+      gender: "",
+      password: "",
+      weight: 0,
+      height: 0,
     },
     onSubmit: (values) => {
-      sendData(values);
-      console.log(values);
+      signupApi(values);
+      console.log(values)
     },
     validationSchema: Yup.object({
-      firstName: Yup.string().required('Please enter your first name'),
-      lastName: Yup.string().required('Please enter your last name'),
-      email: Yup.string().required('Please enter your email'),
-      password: Yup.string().required('Please enter your password'),
-      weight: Yup.number().required('Please enter your weight'),
-      height: Yup.number().required('Please enter your height'),
+      firstName: Yup.string().required("Please enter your first name"),
+      lastName: Yup.string().required("Please enter your last name"),
+      email: Yup.string().required("Please enter your email"),
+      password: Yup.string().required("Please enter your password"),
+      weight: Yup.number().required("Please enter your weight"),
+      height: Yup.number().required("Please enter your height"),
     }),
   });
 
@@ -56,7 +47,7 @@ const Signup = (props: Props) => {
               Create a new account
             </h2>
             <p className="mt-2 text-sm text-gray-600">
-              Or{' '}
+              Or{" "}
               <Link href="signin">
                 <a className="font-medium">Sign in to an exisit account</a>
               </Link>
@@ -134,6 +125,7 @@ const Signup = (props: Props) => {
                   >
                     Gender
                   </label>
+
                   <select
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -142,8 +134,13 @@ const Signup = (props: Props) => {
                     className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-black focus:outline-none focus:ring-indigo-500 sm:text-sm"
                     value={formik.values.gender}
                   >
-                    <option>Male</option>
-                    <option>Female</option>
+                    <option value="">--Please choose a Gender--</option>
+                    <option value="Male" label="Male">
+                      Male
+                    </option>
+                    <option value="Female" label="Female">
+                      Female
+                    </option>
                     {formik.errors.gender && formik.touched.gender ? (
                       <div
                         className="p-2 mb-2 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
@@ -249,7 +246,7 @@ const Signup = (props: Props) => {
                       htmlFor="lastname"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Your height{' '}
+                      Your height{" "}
                     </label>
                     <div className="mt-1">
                       <input
