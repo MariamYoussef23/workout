@@ -9,7 +9,7 @@ type Props = {};
 
 const WorkoutPage = (props: Props) => {
   const router = useRouter();
-  const id = router.query.id;
+  const name = router.query.name;
 
   const exercises = [
     {
@@ -63,7 +63,7 @@ const WorkoutPage = (props: Props) => {
 
               <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                 {exercises.map((exercise) => (
-                  <Link key={exercise.id} href={"/exercises/" + exercise.id}>
+                  <Link key={exercise.id} href={"/workouts/exercises/" + exercise.name}>
                     <a className="group">
                       <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg sm:aspect-w-2 sm:aspect-h-3">
                         <img

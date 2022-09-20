@@ -1,6 +1,6 @@
 import React from 'react';
-import Layout from '../../components/layout';
-import Workouttable from '../../components/workouttable';
+import Layout from '../../../components/layout';
+import Workouttable from '../../../components/workouttable';
 
 type Props = {};
 
