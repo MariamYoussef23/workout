@@ -19,6 +19,7 @@ model User {
   password       String
   weight      Int?
   height      Int?
+  gender         String?
   userLogs UserLog[]
 }
 
@@ -26,6 +27,7 @@ model Workout {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   name       String
+  imageSrc   String
   workoutLines WorkoutLine[]
 }
 
