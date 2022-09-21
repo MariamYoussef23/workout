@@ -10,7 +10,7 @@ import { prisma } from "../../lib/prisma";
 
 type Props = {};
 
-const WorkoutPage = ({ exercises }: { exercises: any }) => {
+const WorkoutPage = ({ exercises }: { exercises: Exercise }) => {
   console.log(exercises);
   return (
     <div>
