@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from '../../components/layout';
 import Workouttable from '../../components/workouttable';
+import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
 type Props = {};
 
 const Exercise = (props: Props) => {
+  const [isPlay, setIsPlay] = useState(false);
   const exercise = {
-    id: "1",
+    id: '1',
     name: 'Squats',
     imageSrc: '/images/venti-views-j-Ou5YvdXFQ-unsplash (1).jpg',
     imageAlt: 'Squats',
@@ -48,12 +50,39 @@ const Exercise = (props: Props) => {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-3 h-full py-8  ">
-          <div className=" rounded-md col-span-2 h-full ">
+        <div className="flex flex-wrap w-full ">
+          <div className=" p-10 w-full lg:w-1/2 ">
             <p className=" font-bold text-5xl">Log workout</p>
             <Workouttable />
           </div>
-          <div className=" text-start"></div>
+          <div className=" lg:w-1/3 flex flex-col items-center w-full mt-auto">
+            {isPlay ? (
+              <CountdownCircleTimer
+                isPlaying
+                duration={30}
+                colors={['#004777', '#F7B801', '#A30000', '#A30000']}
+                colorsTime={[30, 20, 10, 0]}
+              >
+                {({ remainingTime }) => remainingTime}
+              </CountdownCircleTimer>
+            ) : (
+              <CountdownCircleTimer
+                duration={30}
+                colors={['#004777', '#F7B801', '#A30000', '#A30000']}
+                colorsTime={[30, 20, 10, 0]}
+              >
+                {({ remainingTime }) => remainingTime}
+              </CountdownCircleTimer>
+            )}
+
+            <button
+              type="button"
+              onClick={() => setIsPlay(!isPlay)}
+              className="m-2  inline-flex items-center rounded-md border border-transparent bg-black px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-black focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
+            >
+              {isPlay ? 'Pause' : 'Start'}
+            </button>
+          </div>
         </div>
       </div>
     </Layout>

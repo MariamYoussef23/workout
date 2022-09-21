@@ -9,11 +9,10 @@ export default async function handler(
 ) {
   try {
     const id = +req.query.id!;
-    const workoutLines = await prisma.workoutLine.findMany({
-      where: { workoutId: id },
-      include: { exercise: true },
+    const exercise = await prisma.exercise.findMany({
+      where: { id },
     });
-    return res.status(200).json({ workoutLines });
+    return res.status(200).json({ exercise });
   } catch (error) {
     console.log(error);
   }

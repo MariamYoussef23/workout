@@ -3,6 +3,7 @@ import CalendarWorkout from '../../components/calendarworkout';
 import Layout from '../../components/layout';
 import Workoutcard from '../../components/workoutcard';
 import { startOfToday, format } from 'date-fns';
+import { CountdownCircleTimer } from 'react-countdown-circle-timer';
 
 type Props = {};
 
