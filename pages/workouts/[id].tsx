@@ -1,17 +1,25 @@
-import { GetStaticPaths, GetStaticProps } from "next";
-import React from "react";
-import Layout from "../../components/layout";
-import { Exercise } from "../../types";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { withPageAuth } from "@supabase/auth-helpers-nextjs";
-import axios from "axios";
-import { prisma } from "../../lib/prisma";
+import React from 'react';
+import { Exercise } from '../../types';
+import Layout from '../../components/layout';
+import Link from 'next/link';
+import { GetStaticPaths, GetStaticProps } from 'next/types';
+import { useUser } from '@supabase/auth-helpers-react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import Router, { useRouter } from 'next/router';
 
-type Props = {};
+const WorkoutPage = ({ exercises }: { exercises: Exercise[] }) => {
+  const { user } = useUser();
+  console.log(user);
 
-const WorkoutPage = ({ exercises }: { exercises: Exercise }) => {
-  console.log(exercises);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (user === null) {
+      router.push('/signin');
+    }
+  }, [user]);
+
   return (
     <div>
       <>
@@ -26,12 +34,14 @@ const WorkoutPage = ({ exercises }: { exercises: Exercise }) => {
 
               <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
                 {exercises.map((exercise: any) => (
-                  <Link key={exercise.exerciseId} href={"/exercises/" + exercise.exerciseId}>
+                  <Link
+                    key={exercise.exerciseId}
+                    href={'/exercises/' + exercise.exerciseId}
+                  >
                     <a className="group">
                       <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg sm:aspect-w-2 sm:aspect-h-3">
                         <img
                           src={exercise.exercise.Images}
-                
                           className="h-full w-full object-cover object-center group-hover:opacity-75"
                         />
                       </div>
@@ -55,29 +65,55 @@ const WorkoutPage = ({ exercises }: { exercises: Exercise }) => {
 
 export default WorkoutPage;
 
-export const getServerSideProps = withPageAuth({
-  redirectTo: "./signin",
-  async getServerSideProps({ params }) {
-    const exercisesdraft = await prisma.workoutLine.findMany({
-      where: { workoutId: +params!.id! },
-      include: {exercise: true}
-    });
-    const exercises = exercisesdraft.map((exercise) => {
-      return {
-        ...exercise,
-        createdAt: exercise.createdAt.getDate(),
-        updatedAt: exercise.updatedAt.getDate(),
-        
-      };
-    });
-
+export const getStaticPaths: GetStaticPaths = async () => {
+  const res = await axios.get('http://localhost:3000/api/workoutline');
+  console.log(res.data);
+  const paths = res.data.workoutLines.map((workoutline: any) => {
     return {
-      props: {
-        exercises,
-      },
+      params: { id: workoutline.id.toString() },
     };
-  },
-});
+  });
+
+  return {
+    paths,
+    fallback: false,
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const id = params?.id;
+  const res = await axios.get(`http://localhost:3000/api/workoutline/${id}`);
+  console.log(res.data);
+
+  return {
+    props: { exercises: res.data.workoutLines },
+  };
+};
+
+// export const getServerSideProps = withPageAuth({
+//   redirectTo: './signin',
+//   async getServerSideProps({ params }) {
+//     const exercisesdraft = await prisma.workoutLine.findMany({
+//       where: { workoutId: +params!.id! },
+//       include: { exercise: true },
+//     });
+//     console.log(exercisesdraft);
+
+//     const exercises = exercisesdraft.map((exercise) => {
+//       return {
+//         ...exercise,
+//         createdAt: exercise.createdAt.getDate(),
+//         updatedAt: exercise.updatedAt.getDate(),
+//       };
+//     });
+
+//     return {
+//       props: {
+//         exercises,
+//       },
+//     };
+//   },
+// });
 
 // const router = useRouter();
 // const id = router.query.id;

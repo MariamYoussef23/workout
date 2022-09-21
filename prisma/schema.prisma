@@ -11,60 +11,71 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  email     String   @unique
-  firstName      String
-  lastName       String
-  password       String
-  weight     String?
-  height      String?
-  gender         String?
-  userLogs UserLog[]
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  email     String    @unique
+  firstName String
+  lastName  String
+  password  String
+  weight    String?
+  height    String?
+  gender    String?
+  userLogs  UserLog[]
 }
 
 model Workout {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  name       String
-  imageSrc   String
+  id           Int                @id @default(autoincrement())
+  createdAt    DateTime           @default(now())
+  name         String
+  imageSrc     String
   workoutLines WorkoutLine[]
+  Exercises    Workoutexercises[]
 }
 
 model Exercise {
-  id        Int      @id @default(autoincrement())
-  Name     String
-  Description       String
+  id           Int                @id @default(autoincrement())
+  Name         String
+  Description  String
   Images       String
-  video      String 
+  video        String
   workoutLines WorkoutLine[]
+  createdAt    DateTime           @default(now())
+  Workout      Workoutexercises[]
+}
+
+model Workoutexercises {
+  workout    Workout  @relation(fields: [workoutId], references: [id])
+  workoutId  Int
+  exercise   Exercise @relation(fields: [exerciseId], references: [id])
+  exerciseId Int
+  assignedAt DateTime @default(now())
+
+  @@id([workoutId, exerciseId])
 }
 
 model WorkoutLine {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  sets      Int
+  id         Int       @id @default(autoincrement())
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  sets       Int
   recReps    Int
-  recWeights   Int
-  exercise Exercise @relation(fields: [exerciseId], references: [id], onDelete: Cascade)
+  recWeights Int
+  exercise   Exercise  @relation(fields: [exerciseId], references: [id], onDelete: Cascade)
   exerciseId Int
-  workout Workout @relation(fields: [workoutId], references: [id], onDelete: Cascade)
-  workoutId Int
-  userLogs UserLog[]
+  workout    Workout   @relation(fields: [workoutId], references: [id], onDelete: Cascade)
+  workoutId  Int
+  userLogs   UserLog[]
 }
 
 model UserLog {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  setNo      Int
-  Reps    Int
-  Weights   Int
-  workoutLine WorkoutLine @relation(fields: [workoutLineId], references: [id], onDelete: Cascade)
+  id            Int         @id @default(autoincrement())
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  setNo         Int
+  Reps          Int
+  Weights       Int
+  workoutLine   WorkoutLine @relation(fields: [workoutLineId], references: [id], onDelete: Cascade)
   workoutLineId Int
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId Int
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId        Int
 }
-
-

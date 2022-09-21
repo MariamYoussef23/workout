@@ -1,43 +1,32 @@
-import Image from "next/image";
-import Link from "next/link";
-import React from "react";
-import { useFormik } from "formik";
-import * as Yup from "yup";
-import axios from "axios";
-import { supabaseClient } from "@supabase/auth-helpers-nextjs";
+import Link from 'next/link';
+import React from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { supabaseClient } from '@supabase/auth-helpers-nextjs';
+import { useRouter } from 'next/router';
 
 type Props = {};
 
 const Signin = (props: Props) => {
-  // const sendData = async (data: any) => {
-  //   try {
-  //     const sentdata = await axios.post(
-  //       'http://localhost:3000/api/user/login',
-  //       data,
-  //     );
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const router = useRouter();
+
 
   const formik = useFormik({
     initialValues: {
-      email: "",
-      password: "",
-    },
-    onSubmit: (values) => {
-      const signInAuth = async () => {
-        await supabaseClient.auth.signIn({
-          email: values.email,
-          password: values.password,
-        });
-      };
-      console.log(values);
+      email: '',
+      password: '',
     },
     validationSchema: Yup.object({
-      email: Yup.string().required("Please enter your email"),
-      password: Yup.string().required("Please enter your password"),
+      email: Yup.string().required('Please enter your email'),
+      password: Yup.string().required('Please enter your password'),
     }),
+    onSubmit: async (values) => {
+      await supabaseClient.auth.signIn({
+        email: values.email,
+        password: values.password,
+      });
+      router.push('/');
+    },
   });
 
   return (
@@ -54,7 +43,7 @@ const Signin = (props: Props) => {
               Sign in to your account
             </h2>
             <p className="mt-2 text-sm text-gray-600">
-              Or{" "}
+              Or{' '}
               <Link href="signup">
                 <a className="font-medium">Create new account</a>
               </Link>
@@ -126,6 +115,7 @@ const Signin = (props: Props) => {
 
                 <div>
                   <button
+                    type="button"
                     onClick={() => formik.handleSubmit()}
                     className="flex w-full justify-center rounded-md border border-transparent bg-black py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-focus:border-black focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
                   >

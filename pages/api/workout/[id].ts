@@ -6,8 +6,8 @@ export default async function handler(
   res: NextApiResponse,
 ) {
   try {
-    const workout = +req.query.workout!;
-    const workoutData = await prisma.workoutLine.findUnique({ where: { id: workout } });
+    const id = +req.query.workout!;
+    const workoutData = await prisma.workoutLine.findMany({ where: { workoutId: id }, include: { exercise: true } });
     return res.status(200).json({ workoutData });
   } catch (error) {
     console.log(error);

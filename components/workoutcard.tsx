@@ -25,6 +25,7 @@ const workoutcard = (props: Props) => {
           </div>
         </div>
       </div>
+      
     </div>
   );
 };
