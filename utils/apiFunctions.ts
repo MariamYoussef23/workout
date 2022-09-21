@@ -16,7 +16,6 @@ export const signupApi = async (values: NewUser, router: NextRouter) => {
       password: values.password,
     });
     const res2 = await API.post("/api/user/signup", values);
-    console.log(res2);
     router.push("/");
   } catch (error) {
     console.log(error);
