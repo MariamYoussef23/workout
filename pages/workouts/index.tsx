@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
-import Layout from "../../components/layout";
-import { useRouter } from "next/router";
+import React, { useEffect } from 'react';
+import Layout from '../../components/layout';
+import { useRouter } from 'next/router';
 // import { Query } from 'typeorm/driver/Query';
-import Link from "next/link";
-import { GetStaticProps } from "next";
-import { getWorkouts } from "../../utils/apiFunctions";
-import { withPageAuth } from "@supabase/auth-helpers-nextjs";
+import Link from 'next/link';
+import { GetStaticProps } from 'next';
+import { getWorkouts } from '../../utils/apiFunctions';
+import { withPageAuth } from '@supabase/auth-helpers-nextjs';
 
 // const workouts = [
 //   {
@@ -84,13 +84,16 @@ const Workouts = ({ workouts }: any) => {
               </p>
               <p className="text-center font-light h-32 text-base">
                 Thoughtfully designed exercises meant to push you to the
-                absolute limits{" "}
+                absolute limits{' '}
               </p>
             </div>
 
             <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
               {workouts.map((workout: any) => (
-                <Link key={workout.id} href={"/workouts/" + workout.id}>
+                <Link
+                  key={workout.id}
+                  href={`/workouts/${workout.id}/exercises`}
+                >
                   <a className="group">
                     <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg sm:aspect-w-2 sm:aspect-h-3">
                       <img
@@ -125,7 +128,7 @@ export default Workouts;
 // };
 
 export const getServerSideProps = withPageAuth({
-  redirectTo: "./signin",
+  redirectTo: './signin',
   async getServerSideProps() {
     const workouts = await getWorkouts();
 
