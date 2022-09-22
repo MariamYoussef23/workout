@@ -9,10 +9,11 @@ export default async function handler(
 ) {
   if (req.method === "POST") {
     try {
-      const { firstName, lastName, email, password, gender, weight, height } =
+      const {id,  firstName, lastName, email, password, gender, weight, height } =
         req.body;
       const user = await prisma.user.create({
         data: {
+          id,
           firstName,
           lastName,
           email,
