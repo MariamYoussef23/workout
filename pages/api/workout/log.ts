@@ -8,8 +8,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   try {
-    const workouts = await prisma.workout.findMany();
-    return res.status(200).json({ workouts });
+    
   } catch (error) {
     console.log(error);
   }
