@@ -1,3 +1,5 @@
+import { WorkoutLine } from "@prisma/client";
+
 export interface Exercise {
   id: string;
   name: string;
@@ -6,7 +8,7 @@ export interface Exercise {
   sets: number;
   reps: string;
   video: string;
-  
+  workoutLines?: WorkoutLine[]
 }
 
 export interface NewUser {

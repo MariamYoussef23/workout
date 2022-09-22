@@ -13,17 +13,6 @@ const Exercise = ({ exercisesData }: any) => {
   console.log(exercisesData);
 
   const [isPlay, setIsPlay] = useState(false);
-  const exercise = {
-    id: '1',
-    name: 'Squats',
-    imageSrc: '/images/venti-views-j-Ou5YvdXFQ-unsplash (1).jpg',
-    imageAlt: 'Squats',
-    description:
-      'A squat is a strength exercise in which the trainee lowers their hips from a standing position and then stands back up. During the descent of a squat, the hip and knee joints flex while the ankle joint dorsiflexes; conversely the hip and knee joints extend and the ankle joint plantarflexes when standing up',
-    sets: '3 sets x 20 reps',
-    video: 'https://www.youtube.com/embed/aclHkVaku9U',
-    href: '#',
-  };
 
   return (
     <Layout>
@@ -59,7 +48,7 @@ const Exercise = ({ exercisesData }: any) => {
         <div className="flex flex-wrap w-full ">
           <div className=" p-10 w-full lg:w-1/2 ">
             <p className=" font-bold text-5xl">Log workout</p>
-            <Workouttable />
+            <Workouttable exercisesData={exercisesData} />
           </div>
           <div className=" lg:w-1/3 flex flex-col items-center w-full mt-auto">
             {isPlay ? (
