@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import Layout from '../../../../components/layout';
-import Workouttable from '../../../../components/workouttable';
-import { CountdownCircleTimer } from 'react-countdown-circle-timer';
-import { GetStaticPaths, GetStaticProps } from 'next/types';
-import axios from 'axios';
-import { prisma } from '../../../../lib/prisma';
-import { WorkoutLine } from '@prisma/client';
+import React, { useState } from "react";
+import Layout from "../../../../components/layout";
+import Workouttable from "../../../../components/workouttable";
+import { CountdownCircleTimer } from "react-countdown-circle-timer";
+import { GetStaticPaths, GetStaticProps } from "next/types";
+import axios from "axios";
+import { prisma } from "../../../../lib/prisma";
+import { WorkoutLine } from "@prisma/client";
 
 type Props = {};
 
@@ -13,17 +13,17 @@ const Exercise = ({ exercisesData }: any) => {
   console.log(exercisesData);
 
   const [isPlay, setIsPlay] = useState(false);
-  const exercise = {
-    id: '1',
-    name: 'Squats',
-    imageSrc: '/images/venti-views-j-Ou5YvdXFQ-unsplash (1).jpg',
-    imageAlt: 'Squats',
-    description:
-      'A squat is a strength exercise in which the trainee lowers their hips from a standing position and then stands back up. During the descent of a squat, the hip and knee joints flex while the ankle joint dorsiflexes; conversely the hip and knee joints extend and the ankle joint plantarflexes when standing up',
-    sets: '3 sets x 20 reps',
-    video: 'https://www.youtube.com/embed/aclHkVaku9U',
-    href: '#',
-  };
+  // const exercise = {
+  //   id: '1',
+  //   name: 'Squats',
+  //   imageSrc: '/images/venti-views-j-Ou5YvdXFQ-unsplash (1).jpg',
+  //   imageAlt: 'Squats',
+  //   description:
+  //     'A squat is a strength exercise in which the trainee lowers their hips from a standing position and then stands back up. During the descent of a squat, the hip and knee joints flex while the ankle joint dorsiflexes; conversely the hip and knee joints extend and the ankle joint plantarflexes when standing up',
+  //   sets: '3 sets x 20 reps',
+  //   video: 'https://www.youtube.com/embed/aclHkVaku9U',
+  //   href: '#',
+  // };
 
   return (
     <Layout>
@@ -45,13 +45,14 @@ const Exercise = ({ exercisesData }: any) => {
                 Description :
               </h2>
               <p className="prose prose-sm mt-1 text-gray-500">
-                {exercisesData.description}
+                {exercisesData.Description}
               </p>
             </div>
             <div className="mt-10">
-              <h2 className="text-sm font-medium text-gray-900">Sets :</h2>
+              <h2 className="text-sm font-medium text-gray-900"></h2>
               <p className="prose prose-sm mt-1 text-gray-500">
-                - {exercisesData.sets}
+                {exercisesData.workoutLines[0].sets} sets x
+                {exercisesData.workoutLines[0].recReps} reps 
               </p>
             </div>
           </div>
@@ -66,7 +67,7 @@ const Exercise = ({ exercisesData }: any) => {
               <CountdownCircleTimer
                 isPlaying
                 duration={30}
-                colors={['#004777', '#F7B801', '#A30000', '#A30000']}
+                colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
                 colorsTime={[30, 20, 10, 0]}
               >
                 {({ remainingTime }) => remainingTime}
@@ -74,7 +75,7 @@ const Exercise = ({ exercisesData }: any) => {
             ) : (
               <CountdownCircleTimer
                 duration={30}
-                colors={['#004777', '#F7B801', '#A30000', '#A30000']}
+                colors={["#004777", "#F7B801", "#A30000", "#A30000"]}
                 colorsTime={[30, 20, 10, 0]}
               >
                 {({ remainingTime }) => remainingTime}
@@ -86,7 +87,7 @@ const Exercise = ({ exercisesData }: any) => {
               onClick={() => setIsPlay(!isPlay)}
               className="m-2  inline-flex items-center rounded-md border border-transparent bg-black px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-black focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
             >
-              {isPlay ? 'Pause' : 'Start'}
+              {isPlay ? "Pause" : "Start"}
             </button>
           </div>
         </div>
