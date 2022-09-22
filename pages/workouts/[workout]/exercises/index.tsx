@@ -11,7 +11,7 @@ import { prisma } from '../../../../lib/prisma';
 import { WorkoutLine } from '@prisma/client';
 const WorkoutPage = ({ exercises }: { exercises: Exercise[] }) => {
   const { user } = useUser();
-  console.log(exercises);
+  console.log(user);
 
   const router = useRouter();
 
