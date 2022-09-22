@@ -70,8 +70,8 @@ import { withPageAuth } from "@supabase/auth-helpers-nextjs";
 // ];
 
 const Workouts = ({ workouts }: any) => {
-  const router = useRouter();
-  const id = router.query.id;
+  // const router = useRouter();
+  // const id = router.query.id;
 
   return (
     <>
@@ -128,7 +128,6 @@ export const getServerSideProps = withPageAuth({
   redirectTo: "./signin",
   async getServerSideProps() {
     const workouts = await getWorkouts();
-
     return {
       props: {
         workouts,

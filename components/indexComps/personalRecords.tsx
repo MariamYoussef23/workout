@@ -1,21 +1,23 @@
+import { withPageAuth } from "@supabase/auth-helpers-nextjs";
+
 const records = [
-    {
-      name: "Squat",
-      record: "25Kg",
-    },
-    {
-      name: "Bicep Curl",
-      record: "55Kg",
-    },
-    {
-      name: "Bench Press",
-      record: "150Kg",
-    },
-    {
-      name: "Overhead Press",
-      record: "90lbs",
-    },
-  ];
+  {
+    name: "Squat",
+    record: "25Kg",
+  },
+  {
+    name: "Bicep Curl",
+    record: "55Kg",
+  },
+  {
+    name: "Bench Press",
+    record: "150Kg",
+  },
+  {
+    name: "Overhead Press",
+    record: "90lbs",
+  },
+];
 
 const PersonalRecords = () => {
   return (
@@ -46,3 +48,16 @@ const PersonalRecords = () => {
 };
 
 export default PersonalRecords;
+
+export const getServerSideProps = withPageAuth({
+  redirectTo: "./signin",
+  async getServerSideProps() {
+    // API function that gets the required info
+
+    return {
+      props: {
+        records,
+      },
+    };
+  },
+});

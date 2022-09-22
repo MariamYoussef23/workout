@@ -30,3 +30,12 @@ export const getWorkouts = async () => {
     console.log(error);
   }
 };
+
+export const getRecords = async () => {
+  try {
+    const res = await API.get("/api/workout/records")
+    return res.data.records 
+  } catch (error) {
+    console.log(error);
+  }
+};
