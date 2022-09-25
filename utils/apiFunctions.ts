@@ -1,7 +1,7 @@
 import { supabaseClient } from "@supabase/auth-helpers-nextjs";
 import axios from "axios";
 import router, { NextRouter } from "next/router";
-import { NewUser } from "../types";
+import { NewUser, userLog } from "../types";
 
 const API = axios.create({ baseURL: "http://localhost:3000" });
 
@@ -44,9 +44,9 @@ export const getWorkouts = async () => {
   }
 };
 
-export const logExercise = async () => {
+export const logExercise = async (data: userLog) => {
   try {
-    const res = await API.post('/api/workout/log')
+    const res = await API.post('/api/workout/log', data)
   } catch (error) {
     console.log(error);
   }

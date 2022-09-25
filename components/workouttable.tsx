@@ -1,22 +1,38 @@
-import { useUser } from "@supabase/auth-helpers-react";
-import React, { useState } from "react";
-import { Exercise } from "../types";
+import { useUser } from '@supabase/auth-helpers-react';
+import React, { useState } from 'react';
+import { Exercise } from '../types';
+import { logExercise } from '../utils/apiFunctions';
 
 type Props = {};
 
 const Workouttable = ({ exercisesData }: { exercisesData: Exercise }) => {
   const exercise = exercisesData;
-  console.log(exercise);
   const { user } = useUser();
 
   const workoutLineId = exercise?.workoutLines![0].id;
-  const userId = user;
+  const userId = user?.id;
+  console.log(userId);
 
-  const [weights, setWeights] = useState("");
-  const [reps, setReps] = useState("");
+  const [Weights, setWeights] = useState(0);
+  const [Reps, setReps] = useState(0);
+  const setNo = exercise?.workoutLines![0].sets;
 
-  
-
+  const InputWeightsHandler = (e: any) => {
+    setWeights(e.target.value);
+  };
+  const InputRepsHandler = (e: any) => {
+    setReps(e.target.value);
+  };
+  const submitHandler = () => {
+    const data = {
+      workoutLineId,
+      userId: userId as string,
+      Weights: Weights as number,
+      Reps: Reps as number,
+      setNo,
+    };
+    logExercise(data);
+  };
   return (
     <>
       <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8 mt-8">
@@ -61,6 +77,7 @@ const Workouttable = ({ exercisesData }: { exercisesData: Exercise }) => {
                     </td>
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                       <input
+                        onChange={(e) => InputWeightsHandler(e)}
                         type="text"
                         name="text"
                         id="text"
@@ -70,15 +87,17 @@ const Workouttable = ({ exercisesData }: { exercisesData: Exercise }) => {
                     </td>
                     <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                       <input
+                        onChange={(e) => InputRepsHandler(e)}
                         type="text"
                         name="text"
                         id="text"
                         className="block w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black sm:text-sm"
                         placeholder=" 3"
-                      />{" "}
+                      />{' '}
                     </td>
                     <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
                       <input
+                        onClick={submitHandler}
                         id="comments"
                         aria-describedby="comments-description"
                         name="comments"

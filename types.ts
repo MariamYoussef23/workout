@@ -20,3 +20,12 @@ export interface NewUser {
   weight: string;
   height: string;
 }
+
+export interface userLog {
+  workoutLineId: number;
+  userId: string;
+  Weights: number;
+  setNo: number;
+  Reps: number;
+
+}

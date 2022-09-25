@@ -72,8 +72,8 @@ model UserLog {
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
   setNo         Int
-  Reps          Int
-  Weights       Int
+  Reps          String
+  Weights       String
   workoutLine   WorkoutLine @relation(fields: [workoutLineId], references: [id], onDelete: Cascade)
   workoutLineId Int
   user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
