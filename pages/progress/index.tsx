@@ -1,11 +1,11 @@
-import React from 'react';
-import Layout from '../../components/layout';
-import StockChart from '../../components/stockChart';
+import React from "react";
+import Layout from "../../components/layout";
+import StockChart from "../../components/stockChart";
 
 type Props = {};
 const data = {
-  stockFullName: 'SW Limited.',
-  stockShortName: 'ASX:SFW',
+  stockFullName: "SW Limited.",
+  stockShortName: "ASX:SFW",
   price: {
     current: 2.32,
     open: 2.23,
@@ -17,19 +17,19 @@ const data = {
   },
   chartData: {
     labels: [
-      '10:00',
-      '',
-      '',
-      '',
-      '12:00',
-      '',
-      '',
-      '',
-      '2:00',
-      '',
-      '',
-      '',
-      '4:00',
+      "10:00",
+      "",
+      "",
+      "",
+      "12:00",
+      "",
+      "",
+      "",
+      "2:00",
+      "",
+      "",
+      "",
+      "4:00",
     ],
     data: [
       2.23, 2.215, 2.22, 2.25, 2.245, 2.27, 2.28, 2.29, 2.3, 2.29, 2.325, 2.325,
