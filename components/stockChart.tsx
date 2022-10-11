@@ -11,10 +11,10 @@ import {
 import React from 'react';
 
 ChartJS.register(LineElement, PointElement, LinearScale, Title, CategoryScale);
-const formatter = (number) =>
+const formatter = (number: any) =>
   number > 999999 ? (number / 1000000).toFixed(1) + 'M' : number;
 
-const buildData = ({ chartData }) => ({
+const buildData = ({ chartData }: any) => ({
   labels: chartData.labels,
   datasets: [
     {
@@ -65,9 +65,9 @@ const options = {
   },
 };
 
-const numberToFix = (number, fix) => (number || 0).toFixed(fix);
+const numberToFix = (number: any, fix: any) => (number || 0).toFixed(fix);
 
-const StockChart = ({ info }) => {
+const StockChart = ({ info }: any) => {
   const data = buildData(info);
 
   return (

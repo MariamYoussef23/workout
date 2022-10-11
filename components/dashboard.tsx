@@ -26,7 +26,7 @@ const navigation = [
     current: false,
   },
   { name: "Calendar", href: "/calendar", icon: CalendarIcon, current: false },
-  { name: "Progress", href: "#", icon: ChartBarIcon, current: false },
+  { name: "Progress", href: "/progress", icon: ChartBarIcon, current: false },
 ];
 const userNavigation = [{ name: "Sign out", href: "/signin" }];
 
