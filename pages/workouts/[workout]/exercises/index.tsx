@@ -5,14 +5,11 @@ import Link from 'next/link';
 import { GetStaticPaths, GetStaticProps } from 'next/types';
 import { useUser } from '@supabase/auth-helpers-react';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import Router, { useRouter } from 'next/router';
 import { prisma } from '../../../../lib/prisma';
 import { WorkoutLine } from '@prisma/client';
 const WorkoutPage = ({ exercises }: { exercises: Exercise[] }) => {
   const { user } = useUser();
-  console.log(user);
-
   const router = useRouter();
 
   useEffect(() => {

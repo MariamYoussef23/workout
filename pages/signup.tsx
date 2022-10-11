@@ -1,39 +1,36 @@
-import Link from "next/link";
-import React from "react";
-import { FormikConsumer, useFormik } from "formik";
-import * as Yup from "yup";
-import axios from "axios";
-import { signupApi } from "../utils/apiFunctions";
-import { useRouter } from "next/router";
-
+import Link from 'next/link';
+import React from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { signupApi } from '../utils/apiFunctions';
+import { useRouter } from 'next/router';
 
 type Props = {};
 
 const Signup = (props: Props) => {
-
-const router = useRouter()
+  const router = useRouter();
 
   const formik = useFormik({
     initialValues: {
-      firstName: "",
-      lastName: "",
-      email: "",
-      gender: "",
-      password: "",
-      weight: "",
-      height:"",
+      firstName: '',
+      lastName: '',
+      email: '',
+      gender: '',
+      password: '',
+      weight: '',
+      height: '',
     },
     onSubmit: (values) => {
       signupApi(values, router);
-      console.log(values)
+      console.log(values);
     },
     validationSchema: Yup.object({
-      firstName: Yup.string().required("Please enter your first name"),
-      lastName: Yup.string().required("Please enter your last name"),
-      email: Yup.string().required("Please enter your email"),
-      password: Yup.string().required("Please enter your password"),
-      weight: Yup.number().required("Please enter your weight"),
-      height: Yup.number().required("Please enter your height"),
+      firstName: Yup.string().required('Please enter your first name'),
+      lastName: Yup.string().required('Please enter your last name'),
+      email: Yup.string().required('Please enter your email'),
+      password: Yup.string().required('Please enter your password'),
+      weight: Yup.number().required('Please enter your weight'),
+      height: Yup.number().required('Please enter your height'),
     }),
   });
 
@@ -51,7 +48,7 @@ const router = useRouter()
               Create a new account
             </h2>
             <p className="mt-2 text-sm text-gray-600">
-              Or{" "}
+              Or{' '}
               <Link href="signin">
                 <a className="font-medium">Sign in to an exisit account</a>
               </Link>
@@ -250,7 +247,7 @@ const router = useRouter()
                       htmlFor="lastname"
                       className="block text-sm font-medium text-gray-700"
                     >
-                      Your height{" "}
+                      Your height{' '}
                     </label>
                     <div className="mt-1">
                       <input
@@ -304,6 +301,5 @@ const router = useRouter()
 
 export default Signup;
 function userRouter() {
-  throw new Error("Function not implemented.");
+  throw new Error('Function not implemented.');
 }
-
