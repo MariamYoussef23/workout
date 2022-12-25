@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { Exercise } from '../types';
 import { logExercise } from '../utils/apiFunctions';
 
-type Props = {};
 
 const Workouttable = ({ exercisesData }: { exercisesData: Exercise }) => {
   const exercise = exercisesData;
@@ -92,7 +91,7 @@ const Workouttable = ({ exercisesData }: { exercisesData: Exercise }) => {
                         name="text"
                         id="text"
                         className="block w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black sm:text-sm"
-                        placeholder=" 3"
+                        placeholder="3"
                       />{' '}
                     </td>
                     <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">

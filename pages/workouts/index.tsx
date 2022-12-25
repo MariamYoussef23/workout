@@ -7,67 +7,6 @@ import { GetStaticProps } from 'next';
 import { getWorkouts } from '../../utils/apiFunctions';
 import { withPageAuth } from '@supabase/auth-helpers-nextjs';
 
-// const workouts = [
-//   {
-//     id: "1",
-//     name: "Leg day",
-//     exercises: [
-//       {
-//         id: 1,
-//         name: "Squats",
-//         description: "3 sets x 20 reps",
-//         video: "https://www.youtube.com/watch?v=aclHkVaku9U",
-//       },
-//       {
-//         id: 2,
-//         name: "Walking Lunge",
-//         description: "3 sets x 20 reps",
-//         video: "https://www.youtube.com/watch?v=L8fvypPrzzs",
-//       },
-//       {
-//         id: 3,
-//         name: "EATED LEG PRESS",
-//         description: "3 sets x 20 reps",
-//         video: "https://youtu.be/IZxyjW7MPJQ",
-//       },
-//       {
-//         id: 4,
-//         name: "DEADLIFT (BARBELL)",
-//         description: "3 sets x 20 reps",
-//         video: "https://youtu.be/r4MzxtBKyNE",
-//       },
-//     ],
-//     imageSrc:
-//       "/images/61a7e2b2c2f2b433de456203_thomas-yohei-BAlBUJb-SXQ-unsplash-p-800.jpeg",
-//     imageAlt: "Leg day",
-//   },
-//   {
-//     id: "2",
-//     name: "Abs day",
-//     href: "#",
-//     description: "5 sets x 15 reps",
-//     imageSrc: "images/colin-lloyd-rdgGNjj69zI-unsplash.jpg",
-//     imageAlt: "Abs day",
-//   },
-//   {
-//     id: "3",
-//     name: "Pull day",
-//     href: "#",
-//     description: "5 sets x 15 reps",
-//     imageSrc: "/images/karolis-milisauskas-eoVdk1z4ihI-unsplash.jpg",
-//     imageAlt: "Pull day",
-//   },
-//   {
-//     id: "4",
-//     name: "Push day",
-//     href: "#",
-//     description: "5 sets x 15 reps",
-//     imageSrc: "/images/meagan-stone-kC5KL_iUpL4-unsplash.jpg",
-//     imageAlt: "Push day",
-//   },
-
-//   // More products...
-// ];
 
 const Workouts = ({ workouts }: any) => {
   const router = useRouter();

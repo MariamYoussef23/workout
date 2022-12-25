@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import {
   ChatBubbleLeftEllipsisIcon,
   TagIcon,
@@ -284,7 +285,7 @@ const WorkoutDetails = () => {
                         </p>
                       </div>
                       <div className="mt-2 text-sm text-gray-700">
-                        <Workouttable />
+                        <Workouttable  />
                       </div>
                     </div>
                   </>

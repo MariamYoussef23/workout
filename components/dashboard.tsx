@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { Fragment, useState } from "react";
-import { Dialog, Menu, Transition } from "@headlessui/react";
+import Link from 'next/link';
+import { Fragment, useState } from 'react';
+import { Dialog, Menu, Transition } from '@headlessui/react';
 import { supabaseClient } from '@supabase/auth-helpers-nextjs';
 import { useRouter } from 'next/router';
 import {
@@ -14,41 +14,45 @@ import {
   UsersIcon,
   XMarkIcon,
   BoltIcon,
-} from "@heroicons/react/24/outline";
-import { MagnifyingGlassIcon } from "@heroicons/react/20/solid";
+} from '@heroicons/react/24/outline';
+import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
+import { useUser } from '@supabase/auth-helpers-react';
 
 const navigation = [
-  { name: "Dashboard", href: "/", icon: HomeIcon, current: true },
+  { name: 'Dashboard', href: '/', icon: HomeIcon, current: true },
   {
-    name: "Browse Workouts",
-    href: "/workouts",
+    name: 'Browse Workouts',
+    href: '/workouts',
     icon: BoltIcon,
     current: false,
   },
-  { name: "Calendar", href: "/calendar", icon: CalendarIcon, current: false },
-  { name: "Progress", href: "/progress", icon: ChartBarIcon, current: false },
+  { name: 'Calendar', href: '/calendar', icon: CalendarIcon, current: false },
+  { name: 'Progress', href: '/progress', icon: ChartBarIcon, current: false },
 ];
-const userNavigation = [{ name: "Sign out", href: "/signin" }];
+const userNavigation = [{ name: 'Sign out', href: '/signin' }];
 
 function classNames(...classes: any) {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(' ');
 }
 type childrenProps = {
   children: React.ReactNode;
 };
 
-
-
 const Dashboard = ({ children }: childrenProps) => {
+  const router = useRouter();
 
-  const router = useRouter()
+  const { user } = useUser();
 
-  const signOut = async ()=> {
-    const { error } = await supabaseClient.auth.signOut()
+  const userName = `${user?.user_metadata.firstName} ${user?.user_metadata.lastName}`;
+
+  console.log(userName);
+
+  const signOut = async () => {
+    const { error } = await supabaseClient.auth.signOut();
     if (!error) {
-      router.push("/signin")
+      router.push('/signin');
     }
-  }
+  };
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
@@ -119,17 +123,17 @@ const Dashboard = ({ children }: childrenProps) => {
                         <a
                           className={classNames(
                             item.current
-                              ? "bg-gray-100 text-gray-900"
-                              : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
-                            "group flex items-center px-2 py-2 text-base font-medium rounded-md"
+                              ? 'bg-gray-100 text-gray-900'
+                              : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                            'group flex items-center px-2 py-2 text-base font-medium rounded-md',
                           )}
                         >
                           <item.icon
                             className={classNames(
                               item.current
-                                ? "text-gray-500"
-                                : "text-gray-400 group-hover:text-gray-500",
-                              "mr-4 flex-shrink-0 h-6 w-6"
+                                ? 'text-gray-500'
+                                : 'text-gray-400 group-hover:text-gray-500',
+                              'mr-4 flex-shrink-0 h-6 w-6',
                             )}
                             aria-hidden="true"
                           />
@@ -162,17 +166,17 @@ const Dashboard = ({ children }: childrenProps) => {
                   <a
                     className={classNames(
                       item.current
-                        ? "bg-gray-100 text-gray-900"
-                        : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
-                      "group flex items-center px-2 py-2 text-sm font-medium rounded-md"
+                        ? 'bg-gray-100 text-gray-900'
+                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                      'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
                     )}
                   >
                     <item.icon
                       className={classNames(
                         item.current
-                          ? "text-gray-500"
-                          : "text-gray-400 group-hover:text-gray-500",
-                        "mr-3 flex-shrink-0 h-6 w-6"
+                          ? 'text-gray-500'
+                          : 'text-gray-400 group-hover:text-gray-500',
+                        'mr-3 flex-shrink-0 h-6 w-6',
                       )}
                       aria-hidden="true"
                     />
@@ -223,7 +227,7 @@ const Dashboard = ({ children }: childrenProps) => {
                 className="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
                 <span className="sr-only">View notifications</span>
-                User Name
+                {userName}
               </button>
 
               {/* Profile dropdown */}
@@ -254,8 +258,8 @@ const Dashboard = ({ children }: childrenProps) => {
                           <Link href={item.href}>
                             <a
                               className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
+                                active ? 'bg-gray-100' : '',
+                                'block px-4 py-2 text-sm text-gray-700',
                               )}
                               onClick={() => signOut()}
                             >

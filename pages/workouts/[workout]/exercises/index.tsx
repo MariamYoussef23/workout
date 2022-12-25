@@ -18,6 +18,7 @@ const WorkoutPage = ({ exercises }: { exercises: Exercise[] }) => {
     }
   }, [user]);
 
+  console.log(exercises);
   return (
     <div>
       <>

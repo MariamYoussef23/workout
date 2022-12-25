@@ -1,4 +1,6 @@
-const WelcomeTab = () => {
+import Link from 'next/link';
+
+const WelcomeTab = ({ useName }: { useName: string }) => {
   return (
     <>
       <div className="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
@@ -14,7 +16,7 @@ const WelcomeTab = () => {
               </div>
               <div className="ml-4">
                 <h3 className="text-lg font-medium leading-6 text-gray-900">
-                  Good Morning, User Name
+                  Good Morning, {useName}
                 </h3>
                 <p className="text-sm text-gray-500">
                   <a href="#"> 10 Days Streak</a>
@@ -23,12 +25,14 @@ const WelcomeTab = () => {
             </div>
           </div>
           <div className="ml-4 mt-4 flex flex-shrink-0">
-            <button
-              type="button"
-              className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-            >
-              <span>Browse Workouts</span>
-            </button>
+            <Link href={'/workouts'}>
+              <button
+                type="button"
+                className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2"
+              >
+                Browse Workouts
+              </button>
+            </Link>
           </div>
         </div>
       </div>

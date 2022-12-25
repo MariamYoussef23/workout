@@ -34,13 +34,14 @@ const Exercise = ({ exercisesData }: any) => {
                 Description :
               </h2>
               <p className="prose prose-sm mt-1 text-gray-500">
-                {exercisesData.description}
+                {exercisesData.Description}
               </p>
             </div>
             <div className="mt-10">
               <h2 className="text-sm font-medium text-gray-900">Sets :</h2>
               <p className="prose prose-sm mt-1 text-gray-500">
-                - {exercisesData.sets}
+                - {exercisesData.workoutLines[0].sets} x{' '}
+                {exercisesData.workoutLines[0].recReps}
               </p>
             </div>
           </div>

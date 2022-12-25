@@ -10,7 +10,6 @@ type Props = {};
 const Signin = (props: Props) => {
   const router = useRouter();
 
-
   const formik = useFormik({
     initialValues: {
       email: '',

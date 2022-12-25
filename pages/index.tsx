@@ -1,13 +1,15 @@
-import type { NextPage } from "next";
-import { useRouter } from "next/router";
-import React from "react";
-import PersonalRecords from "../components/indexComps/personalRecords";
-import WelcomeTab from "../components/indexComps/welcomeTab";
-import WorkoutDetails from "../components/indexComps/workoutDetails";
-import Layout from "../components/layout";
+import { useUser } from '@supabase/auth-helpers-react';
+import type { NextPage } from 'next';
+import React from 'react';
+import PersonalRecords from '../components/indexComps/personalRecords';
+import WelcomeTab from '../components/indexComps/welcomeTab';
+import WorkoutDetails from '../components/indexComps/workoutDetails';
+import Layout from '../components/layout';
 
 const Home: NextPage = () => {
-  const router = useRouter();
+  const { user } = useUser();
+
+  const useName = `${user?.user_metadata.firstName} ${user?.user_metadata.lastName}`;
 
   return (
     <>
@@ -16,7 +18,7 @@ const Home: NextPage = () => {
           <div className="py-6">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
               <div className="bg-white shadow sm:rounded-lg">
-                <WelcomeTab />
+                <WelcomeTab useName={useName} />
               </div>
 
               <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
